@@ -65,11 +65,12 @@ const categoryIcons = {
 };
 
 const quizCardsContainer = document.getElementById("quiz-card");
-quizCategories.forEach((category) => {
-  const card = document.createElement("div");
-  card.className =
-    "science-card flex flex-col items-center p-4 rounded shadow-md hover:shadow-xl gap-4 bg-gray-800 transform hover:scale-105 transition duration-300";
-  card.innerHTML = `
+if (quizCardsContainer) {
+  quizCategories.forEach((category) => {
+    const card = document.createElement("div");
+    card.className =
+      "science-card flex flex-col items-center p-4 rounded shadow-md hover:shadow-xl gap-4 bg-gray-800 transform hover:scale-105 transition duration-300";
+    card.innerHTML = `
      <h2 class="text-xl md:text-2xl font-semibold flex items-center gap-1">
              ${category.title}
              ${categoryIcons[category.icon]}
@@ -85,14 +86,59 @@ quizCategories.forEach((category) => {
   <p class="text-center text-gray-300">
             ${category.description}
           </p>
-     <div>
-            <button
-              type="button"
+     <div class='p-4'>
+            <a
+               href="game.html?category=${category.icon}"
               class="bg-indigo-600 px-6 py-4 rounded-2xl font-semibold hover:bg-indigo-500 transition duration-300 md:px-8"
             >
               ${category.buttonText}
-            </button>
+            </a>
           </div>
   `;
-  quizCardsContainer.appendChild(card);
-});
+
+    quizCardsContainer.appendChild(card);
+  });
+}
+const quizzes = {
+  science: [
+    {
+      question: "What planet is known as the Red Planet?",
+      answers: ["Earth", "Venus", "Mars", "Jupiter"],
+      correctIndex: 2,
+    },
+    {
+      question: "What gas do plants absorb from the atmosphere?",
+      answers: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Helium"],
+      correctIndex: 1,
+    },
+  ],
+
+  history: [
+    {
+      question: "Who was the first emperor of Rome?",
+      answers: ["Julius Caesar", "Augustus", "Nero", "Caligula"],
+      correctIndex: 1,
+    },
+    {
+      question: "In what year did World War II end?",
+      answers: ["1940", "1942", "1945", "1948"],
+      correctIndex: 2,
+    },
+  ],
+
+  entertainment: [
+    {
+      question: "Which movie features the quote: 'I'll be back'?",
+      answers: ["Die Hard", "The Terminator", "Predator", "Robocop"],
+      correctIndex: 1,
+    },
+    {
+      question: "Who sang 'Bohemian Rhapsody'?",
+      answers: ["The Beatles", "Queen", "Led Zeppelin", "Pink Floyd"],
+      correctIndex: 1,
+    },
+  ],
+};
+const urlParams = new URLSearchParams(window.location.search);
+const category = urlParams.get("category");
+const quiz = quizzes[category];
