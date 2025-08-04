@@ -16,7 +16,7 @@ const quizCategories = [
     imgAlt: "brown painted structure",
     description:
       "Journey through time from ancient civilizations to modern events. Test your knowledge of world history, famous figures, and pivotal moments that shaped our world.",
-    buttonText: "Begin Exploration",
+    buttonText: "Explore the Past",
   },
   {
     title: "Entertainment",
@@ -25,7 +25,7 @@ const quizCategories = [
     imgAlt: "person holding white print paper",
     description:
       "Dive into the world of movies, music, TV shows, and pop culture. From classic films to chart-topping hits, see how well you know the entertainment industry.",
-    buttonText: "Begin Exploration",
+    buttonText: "Start Quiz",
   },
 ];
 const categoryIcons = {
@@ -96,5 +96,3 @@ quizCategories.forEach((category) => {
   `;
   quizCardsContainer.appendChild(card);
 });
-
-console.log(quizCategories[0]);
